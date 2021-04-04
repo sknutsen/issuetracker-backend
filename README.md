@@ -1,7 +1,7 @@
 # Packages used
-Express
-Typescript
-NodeJS
-Jest
-Typeorm
-dotenv
+Express  
+Typescript  
+NodeJS  
+Jest  
+Typeorm  
+dotenv  
