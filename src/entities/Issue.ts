@@ -7,13 +7,13 @@ export class Issue extends BaseEntity {
     @PrimaryGeneratedColumn()
     public Id: number;
 
-    @ManyToOne(type => Group)
+    @ManyToOne(type => Group, group => group.Issues)
     @JoinColumn()
-    public Group: number;
+    public Group: Group;
 
-    @ManyToOne(type => User)
+    @ManyToOne(type => User, user => user.Issues)
     @JoinColumn()
-    public User: number;
+    public User: User;
 
     @Column("text")
     public Title: string;
