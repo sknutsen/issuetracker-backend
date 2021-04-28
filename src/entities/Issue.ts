@@ -23,4 +23,10 @@ export class Issue extends BaseEntity {
 
     @Column("text")
     public Severity: string;
+
+    @Column("datetime", {default: Date.now()})
+    public PostedAt: Date;
+
+    @Column("datetime", {default: Date.now()})
+    public UpdatedAt: Date;
 }
