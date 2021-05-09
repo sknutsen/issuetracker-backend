@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { isAuth } from "../middleware/isAuth";
 import groups from "./groups";
 import issues from "./issues";
 import users from "./users";
@@ -9,10 +10,10 @@ routes.get("/", async (req, res) => {
     res.send("Hello");
 });
 
-routes.use("/groups", groups);
+routes.use("/groups", [isAuth], groups);
 
-routes.use("/issues", issues);
+routes.use("/issues", [isAuth], issues);
 
-routes.use("/users", users);
+routes.use("/users", [isAuth], users);
 
 export default routes;

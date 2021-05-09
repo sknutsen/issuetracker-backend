@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { User } from "../../entities/User";
 import { issueDelete } from "./delete";
 import { issuesGet, issueGet } from "./get";
 import { issuePost } from "./post";
@@ -30,6 +31,11 @@ issues.put("/:issue", async (req:any, res) => {
     res.send(result);
 });
 issues.post("/", async (req:any, res) => {
+    const Name = res.locals.name;
+    const user = await User.createQueryBuilder("User").where("LOWER(User.Name) = LOWER(:Name)", { Name }).getOne();
+    console.log("user: ---");
+    console.log(user);
+    req.body.User = user;
     const result = await issuePost(req.body);
 
     res.status(200);

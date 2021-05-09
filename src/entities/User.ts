@@ -10,9 +10,7 @@ export class User extends BaseEntity {
     @Column("text")
     public Name: string;
 
-    @OneToMany(type => Issue, issue => issue.User, {
-        eager: true
-    })
+    @OneToMany(type => Issue, issue => issue.User)
     public Issues: Issue[];
 
     @ManyToMany(type => Group, group => group.Users)

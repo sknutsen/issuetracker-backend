@@ -7,11 +7,15 @@ export class Issue extends BaseEntity {
     @PrimaryGeneratedColumn()
     public Id: number;
 
-    @ManyToOne(type => Group, group => group.Issues)
+    @ManyToOne(type => Group, group => group.Issues, {
+        eager: true
+    })
     @JoinColumn()
     public Group: Group;
 
-    @ManyToOne(type => User, user => user.Issues)
+    @ManyToOne(type => User, user => user.Issues, {
+        eager: true
+    })
     @JoinColumn()
     public User: User;
 
@@ -24,9 +28,9 @@ export class Issue extends BaseEntity {
     @Column("text")
     public Severity: string;
 
-    @Column("datetime", {default: Date.now()})
+    @Column("timestamp", {default: new Date()})
     public PostedAt: Date;
 
-    @Column("datetime", {default: Date.now()})
+    @Column("timestamp", {default: new Date()})
     public UpdatedAt: Date;
 }
